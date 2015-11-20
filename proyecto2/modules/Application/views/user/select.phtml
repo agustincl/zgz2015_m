@@ -1,0 +1,27 @@
+<?php 
+echo "<a href=\"UserController.php?action=insert\">Insert</a>";
+        echo "<table border=1>";
+        // Para cada linea
+        foreach ($users as $key => $user)
+        {
+            echo "<tr>";
+             // Separar por pipes
+             $user = explode("|", $user);
+            // Recorrer la informacion del usuario
+            foreach ($user as $data)
+            {
+                // Mostar el dato
+                echo "<td>";
+                echo $data;
+                echo "</td>";
+            }
+            
+                echo "<td>";
+                echo "<a href=\"UserController.php?action=update&id=".$key."\">Update</a> |
+                      <a href=\"UserController.php?action=delete&id=".$key."\">Delete</a> 
+                      ";
+                echo "</td>";
+            
+            echo "</tr>";
+        }
+        echo "</table>";
