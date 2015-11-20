@@ -13,17 +13,17 @@
 function SelectTag($name, $values, $selected, $type){
 
     $tag='';
-    if ($type == "radio"){
+    if ($type == "RADIO"){
 
         foreach ($values as $key=>$value){
 
             if ($key == $selected){
                  
-                $tag = $tag . "<input type=\"radio\"name=\"".$name."\" value=\"".$value."\  checked >".$selected."  ";
+                $tag = $tag . "<input type=\"radio\"name=\"".$name."\" value=\"".$key."\  checked >$value".$selected."  ";
 
             }else{
 
-                $tag = $tag . "<input type=\"radio\"name=\"".$name."\" value=\"".$value."\" > ";
+                $tag = $tag . "<input type=\"radio\"name=\"".$name."\" value=\"".$key."\" >$value ";
             }
         }
     }else{

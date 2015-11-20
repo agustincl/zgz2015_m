@@ -18,7 +18,7 @@ function SelectmultipleTag($name, $values, $select, $type)
     $output='';
     if($type == "SELECTMULTIPLE")
     {
-        $output = "<SELECT MULTIPLE SIZE= \"3\" NAME=\"".$name."\">";        
+        $output = "<SELECT MULTIPLE SIZE= \"3\" NAME=\"".$name."[]\">";        
     }
     foreach($values as $key => $value)
     {
@@ -39,11 +39,11 @@ function SelectmultipleTag($name, $values, $select, $type)
              
              if($select && in_array($key, $select))
              {
-                $output .= '<INPUT TYPE= "checkbox" NAME="'.$name.'" VALUE="'.$key.'"  CHECKED>'.$value;
+                $output .= '<INPUT TYPE= "checkbox" NAME="'.$name.'[]" VALUE="'.$key.'"  CHECKED>'.$value;
              }
              else 
              {
-                $output .= '<INPUT TYPE="checkbox" NAME="'.$name.'" VALUE="'.$key.'" >'.$value;
+                $output .= '<INPUT TYPE="checkbox" NAME="'.$name.'[]" VALUE="'.$key.'" >'.$value;
              }
          }       
      

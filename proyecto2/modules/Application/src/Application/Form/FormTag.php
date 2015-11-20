@@ -13,12 +13,12 @@ function FormTag($action, $method, $withfile)
     $text="";
     if($withfile == true)
     {
-        $text='<form action="'.$action.'" method="'.$method.'" enctype="multipart/form-data"></form>';
+        $text='<form action="'.$action.'" method="'.$method.'" enctype="multipart/form-data">';
     }else{
-        $text='<form action="'.$action.'" method="'.$method.'"></form>';
+        $text='<form action="'.$action.'" method="'.$method.'">';
     }
     
-    return text;
+    return $text;
 }
 
 //Llamada a las pruebas unitarias
