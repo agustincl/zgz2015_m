@@ -9,8 +9,6 @@
  */
 function TextareaTag($name, $content)
 {
-    $html='<textarea NAME="'.$name.'">
-            '.$content.'
-            </textarea>';
+    $html='<textarea NAME="'.$name.'">'.$content.'</textarea>';
     return $html;
 }
