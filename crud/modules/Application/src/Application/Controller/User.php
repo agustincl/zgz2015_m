@@ -3,14 +3,9 @@
 
 $userfilename = $_SERVER['DOCUMENT_ROOT'].'/../data/user.txt';
 
-if(isset($_GET['action']))
-    $action=$_GET['action'];
-else
-    $action = 'select';
+   
 
-    
-
-switch($action)
+switch($router['action'])
 {
     case 'insert':        
         if($_POST)
@@ -72,8 +67,8 @@ switch($action)
         {
             
             // Formulario de si/no para user id
-            $id =$_GET['id'];
-            $name =$_GET['id'];
+            $id =$router['params']['id'];
+            $name =$router['params']['id'];
             include ("../modules/Application/views/user/delete.phtml");
         }
         break;

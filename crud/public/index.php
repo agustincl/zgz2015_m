@@ -1,18 +1,23 @@
 <?php
 
-echo "<pre>";
-print_r($_SERVER);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SERVER);
+// echo "</pre>";
 
-if(isset($_GET['controller']))
-    $controller=$_GET['controller'];
-    else
-        $controller = 'user';
+include("../modules/Utils/src/Utils/Model/Router.php");
+
+$router = Router($_SERVER['REQUEST_URI']);
+
+echo "<pre>";
+print_r($router);
+echo "</pre>";
     
-switch($controller)
+        
+
+switch($router['controller'])
 {
     case 'user':
-        include ("../modules/Application/src/Application/Controller/UserController.php");
+        include ("../modules/Application/src/Application/Controller/User.php");
     break;
         
 }
