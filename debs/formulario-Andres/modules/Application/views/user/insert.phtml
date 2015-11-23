@@ -1,8 +1,8 @@
 <?php 
 // mostrar formulario vacio
-            $form = file_get_contents("register.json");
+            $form = file_get_contents("register.json");//devuelve un string con el contenido del archivo
             
-            $form = json_decode($form, true);
+            $form = json_decode($form, true);//Convierte un string codificado en JSON a una variable de PHP
             
             // echo "<pre>";
             // print_r($form);
@@ -17,13 +17,13 @@
             include("../modules/Application/src/Application/Form/FormTag.php");
             
             
-            echo "<ul>";
-            echo call_user_func_array('FormTag',$form['FormTag'])."\n";
+            echo "</ul>";
+            echo call_user_func_array('FormTag',$form['FormTag'])."\n";//pasa a la funcion 'Formtag' un array.Crea etiquetas form.
             foreach ($form['Elements'] as $element)
             {
                 echo "<li>".$element['label']."\n";
-                echo call_user_func_array($element['type'],$element['params'])."\n";
+                echo call_user_func_array($element['type'],$element['params'])."\n";//$element['type'] es el nombre de la funcion
                 echo "</li>"."\n";
             }
             echo "</form>";
-            echo "</ul>";
+            echo "<ul>";

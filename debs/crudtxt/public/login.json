@@ -1,0 +1,8 @@
+{
+	"FormTag":{"action":"action.php","method":"POST","withfile":"TRUE"},
+	"Elements":[
+		{"type":"TextTag","params":{"name":"email","value":"null","type":"TEXT"}},
+		{"type":"TextTag","params":{"name":"password","value":"null", "type":"PASSWORD"}},
+		{"type":"ButtonTag","params":{"name":"submit","value":"Enviar","type":"SUBMIT"}}
+	]
+}

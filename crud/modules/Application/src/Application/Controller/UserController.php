@@ -1,10 +1,14 @@
 <?php
 
+
+$userfilename = $_SERVER['DOCUMENT_ROOT'].'/../data/user.txt';
+
 if(isset($_GET['action']))
     $action=$_GET['action'];
 else
     $action = 'select';
 
+    
 
 switch($action)
 {
@@ -13,7 +17,7 @@ switch($action)
         {
             $_POST['photo']=$_FILES['photo']['name'];
             include("../modules/Application/src/Application/Model/Txt/Insert.php");
-            Insert($_POST, 'user.txt');
+            Insert($_POST, $userfilename);
             // saltar a tabla
             header("Location: /UserController.php");
         }
@@ -29,7 +33,7 @@ switch($action)
 //             print_r($_POST);
 //             $_POST['photo']=$_FILES['photo']['name'];
             include("../modules/Application/src/Application/Model/Txt/Update.php");
-            Update($_POST['id'], $_POST, 'user.txt');
+            Update($_POST['id'], $_POST, $userfilename);
             // saltar a tabla
             header("Location: /UserController.php");
         }
@@ -37,7 +41,7 @@ switch($action)
         {
             // Formulario relleno con los datos
             $id = $_GET['id'];
-            $_GET['filename'] = 'user.txt';
+            $_GET['filename'] = $userfilename;
             include ("../modules/Application/views/user/update.phtml");
         }
         
@@ -45,7 +49,7 @@ switch($action)
     case 'select':
         
         // Leer el archivo de texto en un string
-        $users = file_get_contents('user.txt');
+        $users = file_get_contents($userfilename);
         
         // convertir el string en array separando por saltos de linea
         $users = explode("\n", $users);
@@ -59,7 +63,7 @@ switch($action)
             if($_POST['submit']=='si')
             {                  
                 include ("../modules/Application/src/Application/Model/Txt/Delete.php");
-                Delete($_POST['id'], 'user.txt');
+                Delete($_POST['id'], $userfilename);
             }
             // Saltar a select
             header("Location: /UserController.php");

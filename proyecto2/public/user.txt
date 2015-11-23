@@ -1,2 +1,3 @@
 ZGZ|M|en|cat|aaaaa|aaa|aaaa|2015-11-04|aaaaa|Enviar|Imagen 007.jpg
 ZGZ|ccc|cc|ccc||Escribe aquí tu drescripción|Enviar|
+BCN|H|es|cat,dog|yyyyy|yyy|yyyy|2015-11-06|yyyyy|Enviar|Imagen 006.jpg

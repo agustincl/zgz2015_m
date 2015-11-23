@@ -10,38 +10,50 @@ switch($action)
 {
     case 'insert':        
         if($_POST)
-        {
+        {	
+			
             $_POST['photo']=$_FILES['photo']['name'];
             include("../modules/Application/src/Application/Model/Txt/Insert.php");
-            Insert($_POST, 'user.txt');
+            Insert($_POST, 'user.txt');//user.txt es el archivo que usamos como base de datos
             // saltar a tabla
-            header("Location: /UserController.php");
+            header("Location: UserController.php");
         }
         else
         {
-            include ("../modules/Application/views/user/insert.phtml");
+            include ("../modules/Application/views/user/insert.phtml");// mostrar formulario vacio
         }
            
         break;
     case 'update':
-        
-        if($_POST){
-//             print_r($_POST);
-//             $_POST['photo']=$_FILES['photo']['name'];
-            include("../modules/Application/src/Application/Model/Txt/Update.php");
-            Update($_POST['id'], $_POST, 'user.txt');
-            // saltar a tabla
-            header("Location: /UserController.php");
-        }
-        else 
-        {
-            // Formulario relleno con los datos
+			//echo "Update";
+		
             $id = $_GET['id'];
-            $_GET['filename'] = 'user.txt';
-            include ("../modules/Application/views/user/update.phtml");
-        }
+			// Leer el archivo de texto en un string
+			$users = file_get_contents('user.txt');
+			// convertir el string en array separando por saltos de linea
+			$users = explode("\n", $users);
+			
+            include("../modules/Application/views/user/Update.phtml");
+			
+			
+            //Insert($_POST, 'user.txt');//user.txt es el archivo que usamos como base de datos
+            // saltar a tabla
+            //header("Location: UserController.php");
         
+        
+        
+            //include ("../modules/Application/views/user/insert.phtml");// mostrar formulario vacio
+        
+           
         break;
+		
+		
+		
+		
+		
+		
+		
+        
     case 'select':
         
         // Leer el archivo de texto en un string
@@ -59,10 +71,11 @@ switch($action)
             if($_POST['submit']=='si')
             {                  
                 include ("../modules/Application/src/Application/Model/Txt/Delete.php");
+                
                 Delete($_POST['id'], 'user.txt');
             }
             // Saltar a select
-            header("Location: /UserController.php");
+            header("Location: UserController.php");
         }
         else 
         {
