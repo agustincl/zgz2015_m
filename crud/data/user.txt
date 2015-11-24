@@ -1,3 +1,7 @@
 ZGZ|M|en|cat|aaaaa|aaaa|aaaa|2015-11-21|aaaa|Enviar|Imagen 010.jpg
 BCN|M|en|cat|asd|asd|asd|2015-11-20|asd|Enviar|Imagen 007.jpg
 CRC|
+ZGZ|M|en|cat|a|1234567890987|asdas|2015-11-12|asdasd|Enviar|Imagen 010.jpg
+BCN|H|en|cat|sdfsdf|12345678909876|      kaka  |2015-11-12|Escribe aquí tu drescripción|Enviar|
+ZGZ|M|en|cat|asdasd|1234567889098765|asdasd|2015-11-28|asdasd|Enviar|Imagen 001.jpg
+ZGZ|asdasdasd|asdasdasdasdasdasdasdasd|||Escribe aquí tu drescripción|Enviar|Imagen 001.jpg

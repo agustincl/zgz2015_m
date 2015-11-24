@@ -11,38 +11,32 @@ switch($router['action'])
     case 'insert':        
         if($_POST)
         {
-            echo "<pre>Post: ";
-            print_r($_POST);
-            echo "</pre>";
-            
             include('../modules/Utils/src/Utils/Form/FilterData.php');
             $formdef="../modules/Application/src/Application/Form/register.json";
-            
             $data = FilterData($_POST, $formdef);
-            echo "<pre>Data: ";
-            print_r($data);
-            echo "</pre>";
-            
             $validate = ValidateData($data, $formdef);
             
-            echo "<pre>Validate: ";
-            print_r($validate);
-            echo "</pre>";
-            
-            die;
-            
-            
-            
-            
-            if(isValid())
+            if($validate['result']===true)
             {
                 $_POST['photo']=$_FILES['photo']['name'];
+                
+                echo "<pre>";
+                print_r($_FILES);
+                echo "</pre>";
+                
+               
+                $destination = $_SERVER['DOCUMENT_ROOT'].'/img/'.$_POST['photo'];
+                move_uploaded_file($_FILES['photo']['tmp_name'], $destination);
+                
                 include("../modules/Application/src/Application/Model/Txt/Insert.php");
                 Insert($_POST, $userfilename);
+                header("Location: /user/select");
             }
+            echo "<pre>";
+            print_r($validate);
+            echo "</pre>";
+            // TODO: mostrar formulario con datos de usuario
             
-            // saltar a tabla
-            header("Location: /user/select");
         }
         else
         {

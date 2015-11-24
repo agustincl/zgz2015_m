@@ -7,8 +7,8 @@ $router = Router($_SERVER['REQUEST_URI'], $config);
 
 
 include ("../modules/".$router['module']."/src/".
-         $router['module']."/Controller/".
-         $router['controller'].".php");
+                       $router['module']."/Controller/".
+                       $router['controller'].".php");
 
 
 

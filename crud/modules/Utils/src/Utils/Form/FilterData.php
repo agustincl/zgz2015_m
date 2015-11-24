@@ -47,7 +47,26 @@ function ValidateData($data, $formdef)
     {
         $data[$key]=Validate($key, $element, getElementDef($formdef, $key));
     }
-    return $data;
+//     echo "<pre>";
+//     print_r($data);
+//     echo "</pre>";
+    $validation['result'] = true;
+    
+    foreach ($data as $validated)
+    {
+        if($validated['result']==='notDefined' || 
+           $validated['result']===true)
+        {
+            $validation['result'] = $validation['result'] && true;
+        }
+        else
+        {
+            $validation['result'] = $validation['result'] && false;
+            $validation['info']=$data;
+        }
+            
+    }
+    return $validation;
 }
 
 function Validate($key, $element, $elementDef)
