@@ -26,12 +26,17 @@
  * @param string $url
  * @return array
  */
-function Router($url)
+function Router($url, $config)
 {
-    $controllers = ['application'=>['user'=>['select','update','delete','insert']]];
+    $controllers = ['Application'=>['user'=>['index',
+                                             'select',
+                                             'update',
+                                             'delete',
+                                             'insert']
+                    ]];
     
     $route=array();
-    echo $url;
+//     echo $url;
     // Separar url por / en un array
     $url = explode('/', $url);
     
@@ -41,42 +46,34 @@ function Router($url)
     if(isset($url[1]) && file_exists($filename))
     {
         // OK controller
-        if(isset($url[2]) && in_array($url[2],$controllers[$url[1]]))
+        if(isset($url[2]) && in_array($url[2],$controllers[$config['defaultModule']][$url[1]]))
         {
             // Ok action
             for($i=3;$i<sizeof($url);$i+=2)
             {
                 if(!isset($url[$i+1]))
-                    return array('controller'=>'error', 'action'=>'_404');
+                    return array('module'=>$config['defaultModule'],'controller'=>'error', 'action'=>'_404');
                 $params[$url[$i]]=$url[$i+1];
             }
-            return array('controller'=>$url[1], 
+            return array('module'=>$config['defaultModule'],
+                         'controller'=>$url[1], 
                          'action'=>$url[2],
                          'params'=>@$params
             );
             
-            echo "<pre>params:";
-            print_r($params);
-            echo "</pre>";
+//             echo "<pre>params:";
+//             print_r($params);
+//             echo "</pre>";
         }
-        return array('controller'=>'error', 'action'=>'_404');
+        
+        else
+            return array('module'=>$config['defaultModule'],'controller'=>'error', 'action'=>'_404');
     }
+    elseif($url[1]=='')
+        return array('module'=>$config['defaultModule'],
+                     'controller'=>$config['defaultController'], 
+                     'action'=>$config['defaultAction']);
     
-    
-    
-    echo "<pre>";
-    print_r($url);
-    echo "</pre>";
-    // Cases KO
-        // Impar en parametros
-        // Controller no existe
-        // Action no existe
-   // Cases OK  
-        // Vacio
-        // Solo controller
-        // Controller, action
-        // Controller, action , params
-    
-    
+
     return $route;
 }

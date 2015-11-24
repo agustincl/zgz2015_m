@@ -1,7 +1,7 @@
 <?php 
 
 // mostrar formulario vacio
-$form = file_get_contents("register.json");
+$form = file_get_contents("../modules/Application/src/Application/Form/register.json");
 
 $form = json_decode($form, true);
 
@@ -25,7 +25,7 @@ $user = $users[$id];
 $user = explode("|", $user);
 
 echo "</ul>";
-echo '<form action="UserController.php?action=update" method="POST" enctype="multipart/form-data">';
+echo '<form action="/user/update" method="POST" enctype="multipart/form-data">';
 foreach ($form['Elements'] as $key=>$element)
 {
     echo "<li>".$element['label']."\n";

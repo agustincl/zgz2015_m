@@ -7,6 +7,7 @@ $userfilename = $_SERVER['DOCUMENT_ROOT'].'/../data/user.txt';
 
 switch($router['action'])
 {
+    
     case 'insert':        
         if($_POST)
         {
@@ -14,7 +15,7 @@ switch($router['action'])
             include("../modules/Application/src/Application/Model/Txt/Insert.php");
             Insert($_POST, $userfilename);
             // saltar a tabla
-            header("Location: /UserController.php");
+            header("Location: /user/select");
         }
         else
         {
@@ -30,17 +31,18 @@ switch($router['action'])
             include("../modules/Application/src/Application/Model/Txt/Update.php");
             Update($_POST['id'], $_POST, $userfilename);
             // saltar a tabla
-            header("Location: /UserController.php");
+            header("Location: /user/select");
         }
         else 
         {
             // Formulario relleno con los datos
-            $id = $_GET['id'];
+            $id = $router['params']['id'];
             $_GET['filename'] = $userfilename;
             include ("../modules/Application/views/user/update.phtml");
         }
         
         break;
+    case 'index':
     case 'select':
         
         // Leer el archivo de texto en un string
@@ -61,7 +63,7 @@ switch($router['action'])
                 Delete($_POST['id'], $userfilename);
             }
             // Saltar a select
-            header("Location: /UserController.php");
+            header("Location: /user/select");
         }
         else 
         {

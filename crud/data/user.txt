@@ -1,1 +1,3 @@
 ZGZ|M|en|cat|aaaaa|aaaa|aaaa|2015-11-21|aaaa|Enviar|Imagen 010.jpg
+BCN|M|en|cat|asd|asd|asd|2015-11-20|asd|Enviar|Imagen 007.jpg
+CRC|
