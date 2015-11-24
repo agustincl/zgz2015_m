@@ -11,9 +11,36 @@ switch($router['action'])
     case 'insert':        
         if($_POST)
         {
-            $_POST['photo']=$_FILES['photo']['name'];
-            include("../modules/Application/src/Application/Model/Txt/Insert.php");
-            Insert($_POST, $userfilename);
+            echo "<pre>Post: ";
+            print_r($_POST);
+            echo "</pre>";
+            
+            include('../modules/Utils/src/Utils/Form/FilterData.php');
+            $formdef="../modules/Application/src/Application/Form/register.json";
+            
+            $data = FilterData($_POST, $formdef);
+            echo "<pre>Data: ";
+            print_r($data);
+            echo "</pre>";
+            
+            $validate = ValidateData($data, $formdef);
+            
+            echo "<pre>Validate: ";
+            print_r($validate);
+            echo "</pre>";
+            
+            die;
+            
+            
+            
+            
+            if(isValid())
+            {
+                $_POST['photo']=$_FILES['photo']['name'];
+                include("../modules/Application/src/Application/Model/Txt/Insert.php");
+                Insert($_POST, $userfilename);
+            }
+            
             // saltar a tabla
             header("Location: /user/select");
         }
