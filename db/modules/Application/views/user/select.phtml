@@ -1,0 +1,27 @@
+<?php 
+echo "<a href=\"/user/insert\">Insert</a>";
+        echo "<table border=1>";
+        // Para cada linea
+        foreach ($rows as $key => $row)
+        {
+            echo "<tr>";
+             // Separar por pipes
+            
+            // Recorrer la informacion del usuario
+            foreach ($row as $data)
+            {
+                // Mostar el dato
+                echo "<td>";
+                echo $data;
+                echo "</td>";
+            }
+            
+                echo "<td>";
+                echo "<a href=\"/user/update/id/".$key."\">Update</a> |
+                      <a href=\"/user/delete/id/".$key."\">Delete</a> 
+                      ";
+                echo "</td>";
+            
+            echo "</tr>";
+        }
+        echo "</table>";
