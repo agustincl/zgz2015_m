@@ -13,7 +13,7 @@ $config = array (
         'password'=>'1234',
         'database'=>'crud'
     ),
-    'adapter' =>'Txt',
+    'adapter' =>'Mysql',
     'userfilename' => $_SERVER['DOCUMENT_ROOT'].'/../data/user.txt',
 );
 

@@ -11,7 +11,7 @@ function GetUser($config, $id)
             include('../modules/Application/src/Application/Model/Mysql/Select.php');
             $link = Connect($config['slave']);
             $query = "SELECT * FROM user WHERE iduser=".$id;
-            echo $query;
+//             echo $query;
             $rows = Select($link, $query);
             break;
         case 'Txt':            

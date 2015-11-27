@@ -73,7 +73,10 @@ function Router($url, $config)
         return array('module'=>$config['defaultModule'],
                      'controller'=>$config['defaultController'], 
                      'action'=>$config['defaultAction']);
-    
+    else
+        return array('module'=>$config['defaultModule'],
+            'controller'=>'error',
+            'action'=>'_404');
 
     return $route;
 }

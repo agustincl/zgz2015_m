@@ -3,6 +3,7 @@
 include('../modules/Application/src/Application/Model/Mapper/UserMapper/GetUsers.php');
 include('../modules/Application/src/Application/Model/Mapper/UserMapper/GetUser.php');
 include('../modules/Application/src/Application/Model/Mapper/UserMapper/DeleteUser.php');
+include('../modules/Utils/src/Utils/View/RenderView.php');
 
 
 $userfilename = $_SERVER['DOCUMENT_ROOT'].'/../data/user.txt';
@@ -14,7 +15,7 @@ switch($router['action'])
     case 'index':
     case 'select':
         $rows = GetUsers ($config);
-        include("../modules/Application/views/user/select.phtml");
+        $content = RenderView($router, array('rows'=>$rows));
     break;
     case 'insert':        
         if($_POST)
@@ -89,7 +90,10 @@ switch($router['action'])
             // Formulario de si/no para user id
             $row = GetUser ($config, $router['params']['id']);
             $id =$router['params']['id'];
-            include ("../modules/Application/views/user/delete.phtml");
+            $content = RenderView($router, array('row'=>$row, 'id'=>$id));            
         }
         break;
 }
+
+
+include ("../modules/Application/views/layout/dashboard.phtml");
