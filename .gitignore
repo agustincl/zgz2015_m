@@ -1,6 +1,7 @@
 # Composer files
 composer.phar
 vendor/
+wordpress/
 
 # Local configs
 config/autoload/*.local.php
