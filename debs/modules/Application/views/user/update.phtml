@@ -1,0 +1,18 @@
+<?php
+$config = $viewParams['config'];
+$id = $viewParams['id'];
+$row = $viewParams['row'];
+
+$form = file_get_contents("../modules/Application/src/Application/Form/register.json");
+$form = json_decode($form, true);
+
+switch($config['adapter']){
+    case 'Mysql':
+        include ("../modules/Application/views/user/Mysql/FormUpdate.php");
+        echo FormUpdate($form, $id, $row);
+        break;
+    case 'Txt':
+        include ("../modules/Application/views/user/Txt/FormUpdate.php");
+        echo FormUpdate($form, $id, $row);
+        break;
+}

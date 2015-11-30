@@ -1,0 +1,73 @@
+<?php 
+// mostrar formulario vacio
+$form = file_get_contents("../modules/Application/src/Application/Form/register.json");
+$form = json_decode($form, true);
+if (isset($viewParams['data'])){
+    $data = $viewParams['data'];
+    $validate = $viewParams['validation'];
+}
+$errormsg = '';
+
+include("../modules/Application/src/Application/Form/FileTag.php");
+include("../modules/Application/src/Application/Form/SelectTag.php");
+include("../modules/Application/src/Application/Form/SelectmultipleTag.php");
+include("../modules/Application/src/Application/Form/ButtonTag.php");
+include("../modules/Application/src/Application/Form/TextareaTag.php");
+include("../modules/Application/src/Application/Form/TextTag.php");
+include("../modules/Application/src/Application/Form/FormTag.php");
+?>
+
+<ul>
+<?php echo call_user_func_array('FormTag',$form['FormTag']);?>
+<?php foreach ($form['Elements'] as $element):?>
+
+    <li><?php
+        if (isset($data)){
+            switch ($element['params']['name']) {
+                case 'name':
+                    $element['params']['value'] = $data['name'];
+                    break;
+                case 'email':
+                    $element['params']['value'] = $data['email'];
+                    break;
+                case 'password':
+                    $element['params']['value'] = $data['password'];
+                    break;
+                case 'description':
+                    $element['params']['content'] = $data['description'];
+                    break;
+                case 'bdate':
+                    $element['params']['value'] = substr($data['bdate'], 0, 10);
+                    break;
+                case 'city':
+                    // TODO
+                    break;
+                case 'gender':
+                    // TODO
+                    break;
+                case 'languages':
+                    // TODO
+                    break;
+                case 'pets':
+                    // TODO
+                    break;
+            }
+        }
+        if (isset($element['validation']) && isset($validate)){
+            $name = $element['params']['name'];
+            foreach ($validate['info'][$name]['mes'] as $msg)
+            {
+                $errormsg .= $msg . "<br/>"; 
+                $element['params']['error'] = $msg . "<br/>"; 
+            }
+                
+        }
+        
+        
+        echo $element['label'] . call_user_func_array($element['type'],$element['params']);
+    ?></li>
+    
+<?php endforeach;?>
+</form>
+</ul>
+<b><?= $errormsg;?></b>

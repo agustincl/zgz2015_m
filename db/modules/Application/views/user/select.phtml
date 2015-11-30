@@ -10,8 +10,8 @@ $rows=$viewParams['rows'];
             	<td><?=$data;?></td>
             <?php endforeach;?>    
             <td>
-                <a href="/user/update/id/<?=$key;?>">Update</a> |
-                <a href="/user/delete/id/<?=$key;?>">Delete</a>       
+                <a href="/user/update/id/<?=$row['iduser'];?>">Update</a> |
+                <a href="/user/delete/id/<?=$row['iduser'];?>">Delete</a>       
             </td>    
         </tr>
     <?php endforeach;?>

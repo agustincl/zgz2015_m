@@ -1,0 +1,5 @@
+ZGZ|M|es|dog|8888|321654987987987|88888|2015-11-08|888888|Enviar|icono_borrar_negro_2.png
+ZGZ|H|en|cat|4@4.4|321654987987|4444|2015-11-04|44444|Enviar|test.csv
+ZGZ|H|es|cat,dog|lola@sola.lol|987654321987654|Peppapig|1981-11-21|lolailo|Enviar|
+BCN|H|en|dog|perri@mason.com|987654321987654|perri|1981-11-26|LALALALA|Enviar|icono_opciones_negro_1.png
+ZGZ|O|es|cat|asdasdasdas|asdasdasdasd|asdasd|2015-11-04|asdasd|Enviar|4
