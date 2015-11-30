@@ -1,8 +1,8 @@
 {
 	"FormTag":{"action":"/user/insert","method":"POST","withfile":"TRUE"},
 	"Elements":[
-		{"label":"Ciudad","type":"SelectTag","params":{"name":"city","values":{"ZGZ":"Zaragoza","BCN":"Barcelona"},"selected":"ZGZ","type":"SELECT"}},
-		{"label":"Sexo","type":"SelectTag","params":{"name":"gender","values":{"M":"Mujer","H":"Hombre","O":"Otros"},"selected":"null","type":"RADIO"}},
+		{"label":"Ciudad","type":"SelectTag","params":{"name":"city_idcity","values":{"ZGZ":"Zaragoza","BCN":"Barcelona"},"selected":"ZGZ","type":"SELECT"}},
+		{"label":"Sexo","type":"SelectTag","params":{"name":"gender_idgender","values":{"M":"Mujer","H":"Hombre","O":"Otros"},"selected":"null","type":"RADIO"}},
 		{"label":"Idiomas","type":"SelectmultipleTag","params":{"name":"languages","values":{"en":"Ingles","es":"Castellano"},"selected":{"en":"Ingles"},"type":"SELECTMULTIPLE"}},
 		{"label":"Mascotas","type":"SelectmultipleTag","params":{"name":"pets","values":{"cat":"Gato","dog":"Perro"},"selected":"null","type":"CHECKBOX"}},
 		{"label":"Email","validation":["len8"],"type":"TextTag","params":{"name":"email","value":"null","type":"TEXT"}},

@@ -29,6 +29,17 @@ function SelectTag($name, $values, $selected, $type){
     }else{
         $tag = $tag . "<select name = \"".$name."\">";
 
+        if(in_array('table', array_keys($values)) &&
+            in_array('idcolumn', array_keys($values)) &&
+            in_array('valuecolumn', array_keys($values)) 
+            )
+        {
+            $query= "SELECT ".$values['idcolumn'].", ".$values['valuecolumn']." 
+                     FROM ".$values['table'];
+            echo $query;
+            
+        }
+        else 
         foreach ($values as $key=>$value){
             if ($key == $selected){
                 $tag = $tag . "<option value = \"".$key."\" selected>".$value;

@@ -53,6 +53,15 @@ switch($router['action']) {
             header("Location: /user/select");
         } else {
             $row = GetUser($config, $router['params']['id']);
+            
+//             die;
+//             $row = GetUser ($config, $router['params']['id']);
+//             echo "<pre>";
+//             print_r($row);
+//             echo "</pre>";
+//             die;
+            
+            
             $id = $router['params']['id'];
             $content = RenderView($router, array('row'=>$row, 'id'=>$id, 'config'=>$config));
         }

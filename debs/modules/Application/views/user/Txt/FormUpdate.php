@@ -10,25 +10,32 @@ include("../modules/Application/src/Application/Form/TextTag.php");
 function FormUpdate ($form, $id, $row) {
     $html = "</ul>";
     $html .= '<form action="/user/update/" method="POST" enctype="multipart/form-data">';
+    
+    
+    
     foreach ($form['Elements'] as $key=>$element) {
 
         $html .= "<li>".$element['label']."\n";
         $params = $element['params'];
+        
+//         echo "<pre>";
+//         print_r($row);
+//         echo "</pre>";
         switch ($element['type']) {
             case 'SelectTag':
-                $params['selected'] = $row[$key];
+                $params['selected'] = $row[$element['params']['name']];
                 break;
             case 'SelectmultipleTag':
-                $params['selected'] = explode(",", $row[$key]);
+                $params['selected'] = explode(",",$row[$element['params']['name']]);
                 break;
             case 'TextTag':
-                $params['value'] = $row[$key];
+                $params['value'] = $row[$element['params']['name']];
                 break;
             case 'TextareaTag':
-                $params['content'] = $row[$key];
+                $params['content'] = $row[$element['params']['name']];
                 break;
             case 'FileTag':
-                $params['name'] = $row[$key];
+                $params['name'] = $row[$element['params']['name']];
                 break;
         }
         $html .= call_user_func_array($element['type'],$params)."\n";

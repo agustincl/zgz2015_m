@@ -8,7 +8,8 @@ $form = json_decode($form, true);
 
 switch($config['adapter']){
     case 'Mysql':
-        include ("../modules/Application/views/user/Mysql/FormUpdate.php");
+//         include ("../modules/Application/views/user/Mysql/FormUpdate.php");
+        include ("../modules/Application/views/user/Txt/FormUpdate.php");
         echo FormUpdate($form, $id, $row);
         break;
     case 'Txt':
