@@ -8,7 +8,7 @@ class Dispatch
     {
         $classname = $router['module'].'\\Controller\\'.$router['controller'];
         $actionname = $router['action'].'Action';
-        $user = new $classname();
+        $user = new $classname($router);
         $user->$actionname();
     }
 }
