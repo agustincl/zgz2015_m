@@ -1,27 +1,20 @@
 <?php
 namespace Application\Mapper;
 
+use Application\Resource\UserEntity;
+use Application\Resource\UserCollection;
 class UserMapper
 {
     public function GetUsers($options)
-    {
-        $rows = array();
-        switch($options->adapter)
-        {
-            case 'Mysql':
-                include('/modules/Application/src/Application/Model/Mysql/connect.php');
-                include('/modules/Application/src/Application/Model/Mysql/Select.php');
-                $link = Connect($options->slave);
-                $query = "SELECT * FROM user";
-                $rows = Select($link, $query);
-                break;
-            case 'Txt':
-                include('/modules/Application/src/Application/Model/Txt/Select.php');
-                $rows = Select($options->userfilename);
-                break;
-        }
-    
-        return $rows;
+    {   
+        $gatewayname = '\\Application\\Gateway\\'.
+                        $options->adapter.'Gateway';
+        $gateway = new $gatewayname($options);
+        $rows = $gateway->getAll('user'); 
+        
+        $collection = new UserCollection();
+        $collection = $collection->hydrate('\Application\Resource\UserEntity', $rows);
+        return $collection;
     }
     
     public function GetUser($config, $id)

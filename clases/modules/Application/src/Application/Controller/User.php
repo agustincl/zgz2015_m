@@ -3,31 +3,24 @@ namespace Application\Controller;
 
 use Application\Options\Options;
 use Application\Mapper\UserMapper;
-use Utils;
 use Utils\View;
+use Utils\Interfaces\OptionsAwareInterface;
+use Utils\Traits\OptionsTrait;
 
-class User
+class User implements OptionsAwareInterface
 {
-    private $router;
+    use OptionsTrait;
+    
     public $layout = 'dashboard';
     public $content;
-    
-    public function __construct($router)
-    {
-        $this->router = $router;    
-    }
-    
+        
     public function indexAction()
-    {        
-        $option = Utils\Model\Options::getInstance();
+    {       
         $options = new Options();
-        $option->Rewrite($this->router, $options);
-        
         $userMapper = new UserMapper();
-        $rows = $userMapper->GetUsers($options);        
+        $rows = $userMapper->GetUsers($this->getOptions($options));        
         $this->content = View::RenderView($this->router, 
-                                          array('rows'=>$rows));
-        
+                                          array('rows'=>$rows));        
     }
     public function selectAction()
     {
