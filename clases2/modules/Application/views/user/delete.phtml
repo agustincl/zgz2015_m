@@ -1,0 +1,19 @@
+<?php 
+$row=$viewParams['row'];
+$id=$viewParams['id'];
+?>
+<ul>
+<form action="/user/delete" method="POST" enctype="multipart/form-data">
+
+Seguro que quieres borrar el usuario
+<?php echo $row['name'];?>
+<INPUT TYPE="HIDDEN" NAME="id" VALUE="<?=$id;?>">
+
+<li>Si
+<INPUT TYPE="SUBMIT" NAME="submit" VALUE="si">
+</li>
+<li>No
+<INPUT TYPE="SUBMIT" NAME="submit" VALUE="no">
+</li>
+</form>
+</ul>

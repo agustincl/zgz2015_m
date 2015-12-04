@@ -2,10 +2,11 @@
 namespace Application\Controller;
 
 use Application\Options\Options;
-use Application\Mapper\UserMapper;
+
 use Utils\View;
 use Utils\Interfaces\OptionsAwareInterface;
 use Utils\Traits\OptionsTrait;
+use Application\Service\UserService;
 
 class User implements OptionsAwareInterface
 {
@@ -15,12 +16,19 @@ class User implements OptionsAwareInterface
     public $content;
         
     public function indexAction()
-    {       
+    {      
         $options = new Options();
-        $userMapper = new UserMapper();
-        $rows = $userMapper->GetUsers($this->getOptions($options));        
+        $options = $this->getOptions($options);        
+        $userService = new UserService();
+        $users = $userService->getUsers($options);  
+        
+//         echo "<pre>";
+        header("Content-Type: application/json");
+        print_r(json_encode($users));
+//         echo "</pre>";
+        die;
         $this->content = View::RenderView($this->router, 
-                                          array('rows'=>$rows));        
+                                          array('rows'=>$users));        
     }
     public function selectAction()
     {
@@ -37,6 +45,12 @@ class User implements OptionsAwareInterface
     
     public function __destruct()
     {
+        
+//         echo "<pre>";
+//         print_r($this->content);
+//         echo "</pre>";
+        die;
+        
         echo View::RenderLayout($this->router, 
                                  $this->layout, 
                                  $this->content);

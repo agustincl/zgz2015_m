@@ -1,12 +1,16 @@
 <?php
 namespace Application\Service;
 
+use Application\Mapper\UserMapper;
+
 class UserService
 {
-    public function getUsers()
+    public function getUsers($options)
     {
+        
+        
         $userMapper = new UserMapper();
-        $rows = $userMapper->GetUsers($this->getOptions($options));
+        $rows = $userMapper->GetUsers($options);
         
         // Send Email
         

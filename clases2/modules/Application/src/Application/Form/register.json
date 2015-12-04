@@ -1,0 +1,16 @@
+{
+	"FormTag":{"action":"/user/insert","method":"POST","withfile":"TRUE"},
+	"Elements":[
+		{"label":"Ciudad","type":"SelectTag","params":{"name":"city","values":{"table":"city","idcolumn":"idcity","valuecolumn":"city"},"selected":"ZGZ","type":"SELECT"}},
+		{"label":"Sexo","type":"SelectTag","params":{"name":"gender","values":{"M":"Mujer","H":"Hombre","O":"Otros"},"selected":"null","type":"RADIO"}},
+		{"label":"Idiomas","type":"SelectmultipleTag","params":{"name":"languages","values":{"en":"Ingles","es":"Castellano"},"selected":{"en":"Ingles"},"type":"SELECTMULTIPLE"}},
+		{"label":"Mascotas","type":"SelectmultipleTag","params":{"name":"pets","values":{"cat":"Gato","dog":"Perro"},"selected":"null","type":"CHECKBOX"}},
+		{"label":"Email","type":"TextTag","params":{"name":"email","value":"null","type":"TEXT"}},
+		{"label":"Password","validation":["password12", "len12"],"type":"TextTag","params":{"name":"password","value":"null", "type":"PASSWORD"}},
+		{"label":"Nombre","filters":["stringTrim", "stripTags"],"type":"TextTag","params":{"name":"name","value":"null","type":"TEXT"}},
+		{"label":"F. Nacimiento","type":"TextTag","params":{"name":"bdate","value":"null","type":"DATE"}},
+		{"label":"Decripcion","type":"TextareaTag","params":{"name":"description","content":"Escribe aquí tu drescripción"}},
+		{"label":"Foto","type":"FileTag","params":{"name":"photo"}},
+		{"label":"Enviar","type":"ButtonTag","params":{"name":"submit","value":"Enviar","type":"SUBMIT"}}
+	]
+}

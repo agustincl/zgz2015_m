@@ -1,0 +1,23 @@
+<?php 
+$rows=$viewParams['rows'];
+
+?>
+ <div class="table-responsive">	            
+<a href="/user/insert">Insert</a>
+<table class="table table-striped">
+    <?php foreach ($rows as $key => $user):?>
+    	<tr>
+        	<?php foreach ($user as $data):?>
+            	<td><?=$data;?></td>
+            <?php endforeach;?>    
+            <td>
+                <a href="/user/update/id/<?=$user->iduser;?>">Update</a> |
+                <a href="/user/delete/id/<?=$user->iduser;?>">Delete</a>       
+            </td>    
+        </tr>
+    <?php endforeach;?>
+</table>
+</div>
+        
+        
+        
